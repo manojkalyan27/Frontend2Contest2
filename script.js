@@ -19,7 +19,7 @@ if((Email.split('@')[0].length > 3) && (/[a-zA-Z]/.test(Email.split('@')[0]))){
 }
     if(!(Email.includes("@") && Email.includes(".") && isChar)){
         errorEmailMessage.style.display = 'block';
-        isEmail = false;  
+        // isEmail = false;  
     }else{
         errorEmailMessage.style.display ='none';  
         isEmail = true;  
@@ -27,35 +27,32 @@ if((Email.split('@')[0].length > 3) && (/[a-zA-Z]/.test(Email.split('@')[0]))){
 })
 
 word.addEventListener('change', (e)=>{
+    
     if(e.target.value.length < 8){           
         errorMessage.style.display ='block';
+        validationMessage.style.display='none';
         isPassword = false;
     }else if(e.target.value.length >=8){
         errorMessage.style.display ='none'; 
-        isPassword = true;
-        if(isEmail && isPassword){
-            validationMessage.style.display='block';
-        }
-        
+        isPassword = true; 
+    }
+    
+    if(isEmail && isPassword){
+        validationMessage.style.display='block';
     }
 })
 
+console.log(`isEmail ${isEmail} isPassword${isPassword}`);
+
 btn.addEventListener('click',()=>{
     
-    if(isEmail && isPassword){
-        // validationMessage.style.display='block';
-        
+    if(isEmail && isPassword){        
         let result = confirm("Press OK to proceed");
             if (result === true) {
                 alert("successful signup!");
             }
     }else{
-        if(!(isEmail)){
-            errorEmailMessage.style.display = 'block';
-        }
-        else if(!(isPassword)){
-            errorMessage.style.display ='block';
-        }
+        alert("please fill correct details")
     }
 });
 
