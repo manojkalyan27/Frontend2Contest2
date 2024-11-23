@@ -19,7 +19,8 @@ if((Email.split('@')[0].length > 3) && (/[a-zA-Z]/.test(Email.split('@')[0]))){
 }
     if(!(Email.includes("@") && Email.includes(".") && isChar)){
         errorEmailMessage.style.display = 'block';
-        // isEmail = false;  
+        validationMessage.style.display='none';
+        isEmail = false;  
     }else{
         errorEmailMessage.style.display ='none';  
         isEmail = true;  
@@ -45,15 +46,11 @@ word.addEventListener('change', (e)=>{
 console.log(`isEmail ${isEmail} isPassword${isPassword}`);
 
 btn.addEventListener('click',()=>{
-    
-    if(isEmail && isPassword){        
-        let result = confirm("Press OK to proceed");
-            if (result === true) {
-                alert("successful signup!");
-            }
+    if(isEmail && isPassword && confirm("Press OK to proceed")){        
+        alert("successful signup!");
     }else{
         alert("please fill correct details")
     }
-});
+    });
 
 
